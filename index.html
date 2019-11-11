@@ -602,120 +602,169 @@
                 },
                 drawRate(data) { //
                     var myChart = echarts.init(document.getElementById('area-reach-rate'));
-                    var option = {
-                        title: {
-                            // text: '百万',
-                            right: 20,
-                            top: 20,
-                            textStyle: {
-                                color: '#fff',
-                                fontSize: "calc(15vh * 100 / 1080)",
-                                fontWeight: '500'
-                            }
-                        },
-                        tooltip: {
-                            trigger: "axis",
-                            axisPointer: {
-                                type: "shadow" //阴影，若需要为直线，则值为'line'
-                            }
-                        },
+                    var option =    {
+
                         grid: {
                             left: "15%",
                             right: "5%",
-                            bottom: "15%",
-                            top: "20%",
+                            bottom: "38%",
+                            top: "10%",
                             // containLabel: true
                         },
-                        xAxis: {
-                            type: 'category',
-                            // offset: this.standSize / 100,
-                            boundaryGap: true,
-                            min: 0,
-                            data: ["雨量", "温度", "湿度", "测斜", '震动', '水位'],
-                            axisLine: {
-                                lineStyle: {
-                                    color: "#292C38"
+                        color: ["#674AFD", "#CF891D", "#3099FD", "#4447D1", "#13CDB9", "#EF4F7C"],
+
+                        // 鼠标移动上去有提示框
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'cross',
+                                label: {
+                                    backgroundColor: '#6a7985'
                                 }
+                            }
+                        },
+
+
+                        // 图例
+                        legend: {
+                            data: ['雨量', '温度', '湿度', '测斜', '震动', '水位'],
+                            bottom: 0,
+                            left: 30,
+                            icon: 'rect',
+                            textStyle: {
+                                fontSize: 10,
+                                color: '#fff'
+                            },
+                            itemGap: 5,// 每一项间距
+                            padding: [0, 10, 5, 0]
+                        },
+
+                        xAxis: {
+                            boundaryGap: false, // 从原点开始
+                            type: 'category',
+                            data: ['1月1日', '2月1日', '3月1日', '4月1日', '5月1日', '6月1日', '7月1日'],
+                            axisTick: {
+                                show: false, // 是否显示x轴刻度
                             },
                             axisLabel: {
                                 textStyle: {
-                                    color: '#fff',//坐标值得具体的颜色
-                                    fontSize: "calc(15vh * 100 / 1080)" //坐标轴字体大小
+                                    color: '#fff',
                                 },
+                                margin: 10,//刻度标签与轴线之间的距离。
                             },
-                            axisTick: {
-                                show: false,
-                                lineStyle: {
-                                    type: "dottod"
-                                }
+                            splitLine: {
+                                show: false // 去掉网格线
                             },
-                            splitLine: {  // 区域内的线的颜色
-                                show: true,
+                            axisLine: {
                                 lineStyle: {
-                                    color: '#292C38'
+                                    color: '#004875', // 颜色
+                                    width: 1 // 粗细
                                 }
                             }
                         },
                         yAxis: {
-                            min: 0,
-                            max: 100,
-                            interval: 20,
-                            axisLine: {
-                                lineStyle: {
-                                    color: "#292C38"
+                            type: 'value',
+                            axisLabel: {
+                                formatter: '{value}%',
+                                textStyle: {
+                                    color: '#fff'
                                 }
                             },
-                            axisLabel: {
-                                formatter: '{value} %',
-                                textStyle: {
-                                    color: '#fff',//坐标值得具体的颜色
-                                    fontSize: "calc(15vh * 100 / 1080)" //坐标轴字体大小
-                                },
+                            axisLine: {
+                                show: false, // 是否显示y轴轴线
                             },
                             axisTick: {
-                                show: false,
-                                lineStyle: {
-                                    type: "dottod"
+                                show: false, // 是否显示y轴刻度
+                            },
+                            splitLine: {
+                                show: true, // 网格线是否显示
+                                lineStyle: { // 设置网格线颜色
+                                    type: "dashed",
+                                    color: ["#004875"]
                                 }
                             },
-                            splitLine: {  // 区域内的线的颜色
-                                lineStyle: {
-                                    color: '#292C38'
-                                }
-                            }
                         },
                         series: [
                             {
-                                barWidth: "20%",
-                                type: "line",
-                                smooth: 0.5,
-                                symbolSize: 12,
-                                symbolColor: 'red',
-                                itemStyle: {
+                                name: "雨量",
+                                data: [20, 32, 11, 34, 30, 34, 20],
+                                type: 'line',
+                                smooth: true, // true 表示光滑的曲线
+                                symbolSize: 0, // 拐点圆的大小
+                                lineStyle: {
                                     normal: {
-                                        lineStyle: {
-                                            width: 2,
-                                            type: 'dotted'  //'dotted'虚线 'solid'实线
-                                        },
-                                        show: true,
-                                        barBorderRadius: [20, 20, 0, 0],
-                                        color: "#BAF500"
+                                        color: "#674AFD",
+                                        width: 2, // 线的粗细
                                     }
-                                },
-                                label: {
+                                }
+                            },
+                            {
+                                name: "温度",
+                                data: [14, 34, 44, 54, 66, 24, 34],
+                                type: 'line',
+                                smooth: true, // true 表示光滑的曲线
+                                symbolSize: 0, // 拐点圆的大小
+                                lineStyle: {
                                     normal: {
-                                        color: "#BAF500",
-                                        show: true,
-                                        position: "top",
-                                        distance: 10,
-                                    },
-
-                                },
-                                data: []
+                                        color: "#CF891D",
+                                        width: 2,// 线的粗细
+                                    }
+                                }
+                            },
+                            {
+                                name: "湿度",
+                                data: [12, 43, 50, 64, 90, 30, 53],
+                                type: 'line',
+                                smooth: true, // true 表示光滑的曲线
+                                symbolSize: 0, // 拐点圆的大小
+                                lineStyle: {
+                                    normal: {
+                                        color: "#3099FD",
+                                        width: 2,// 线的粗细
+                                    }
+                                }
+                            },
+                            {
+                                name: "测斜",
+                                data: [13, 25, 53, 34, 13, 31, 23],
+                                type: 'line',
+                                smooth: true, // true 表示光滑的曲线
+                                symbolSize: 0, // 拐点圆的大小
+                                lineStyle: {
+                                    normal: {
+                                        color: "#4447D1",
+                                        width: 2,// 线的粗细
+                                    }
+                                }
+                            },
+                            {
+                                name: "震动",
+                                data: [67, 78, 79, 57, 67, 77, 78],
+                                type: 'line',
+                                smooth: true, // true 表示光滑的曲线
+                                symbolSize: 0, // 拐点圆的大小
+                                lineStyle: {
+                                    normal: {
+                                        color: "#13CDB9",
+                                        width: 2,// 线的粗细
+                                    }
+                                }
+                            },
+                            {
+                                name: "水位",
+                                data: [34, 34, 31, 34, 33, 30, 10],
+                                type: 'line',
+                                smooth: true, // true 表示光滑的曲线
+                                symbolSize: 0, // 拐点圆的大小
+                                lineStyle: {
+                                    normal: {
+                                        color: "#EF4F7C",
+                                        width: 2,// 线的粗细
+                                    }
+                                }
                             }
                         ]
                     }
-                    option.series[0].data = data;
                     myChart.setOption(option)
                     $(window).resize(function () {
                         myChart.resize();
