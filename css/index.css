@@ -1,0 +1,261 @@
+body {
+    background: url(../img/w_bg.png) no-repeat;
+    background-size: cover;
+}
+
+.block-left {
+    width: 25%;
+    height: 100%;
+    float: left;
+    padding: 20px 40px 20px 20px;
+}
+
+.block-center {
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding: 240px 0 160px;
+}
+
+.title-bar {
+    margin-top: -220px;
+    height: 220px;
+}
+
+.title-bar .title {
+    height: 55px;
+    font-size: 34px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.title-bar .amount-panel {
+    height: 40px;
+    padding-left: 280px;
+    background: url(../img/oblique.png) no-repeat 180px bottom;
+    margin-bottom: 10px;
+}
+
+.title-bar .amount-panel .title {
+    color: #F5A623;
+    font-size: 18px;
+    margin-left: -280px;
+    float: left;
+    width: 170px;
+    height: 40px;
+    line-height: 38px;
+    text-align: center;
+    border: solid 1px #005ca5;
+    border-radius: 3px;
+    padding-left: 6px;
+    background: 10px center no-repeat;
+}
+
+.title-bar .amount-panel .con {
+    color: #00dfea;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+    border-bottom: solid 1px #fff;
+}
+
+.year-amounts {
+    margin: 0 auto;
+    max-width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.single {
+    width: 60px;
+    padding: 0 2px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.single.comma {
+    width: 30px;
+}
+
+.nums {
+    position: absolute;
+    top: 0;
+    height: 900px;
+    width: 90%;
+    font-weight: bold;
+    background: #002142;
+    transition: all ease 0.3s;
+}
+
+.single.comma .nums {
+    background: transparent;
+    top: 0 !important;
+}
+
+.nums div {
+    display: flex;
+    height: 90px;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 75px;
+    background: #002142;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 250, 248, 1)), to(rgba(0, 159, 221, 1)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.map-container {
+    width: 100%;
+    height: 100%;
+}
+
+.menu-bar {
+    height: 140px;
+}
+
+.menu-bar .amount-category {
+    line-height: 30px;
+    margin-bottom: 20px;
+    font-size: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu-bar .amount-category > div {
+    display: inline-block;
+    padding: 0 20px 0 60px;
+    text-align: right;
+}
+
+.menu-bar .amount-category .field {
+    margin-left: -60px;
+    float: left;
+    color: #00ecc9;
+    font-size: 20px;
+}
+
+.menu-bar .amount-category .val {
+    color: #F5A623;
+    font-size: 24px;
+    vertical-align: top;
+}
+
+.menu-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.menu-item {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 81px;
+    background: url(../img/hexagon_bg.png) center no-repeat;
+    overflow: hidden;
+}
+
+.menu-item:first-child {
+    margin-right: -6px;
+}
+
+.menu-item:last-child {
+    margin-left: -6px;
+}
+
+.menu-item > a {
+    font-size: 0;
+    color: #00ecc9;
+    text-decoration: none;
+    display: block;
+    width: 200%;
+    height: 100%;
+    white-space: nowrap;
+    position: relative;
+}
+
+.menu-item > a div,
+.menu-item > a span {
+    font-size: 20px;
+    text-align: center;
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    vertical-align: middle;
+    line-height: 81px;
+    overflow: hidden;
+}
+
+.menu-item a {
+    transition: all ease 1s;
+}
+
+.menu-item:hover a {
+    transform: translateX(-70px);
+    transition: all ease 0.5s;
+}
+
+.block-right {
+    width: 25%;
+    height: 100%;
+    float: left;
+    padding: 20px 20px 20px 40px;
+}
+
+.top-rank {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 2% 5%;
+    color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.top-rank li {
+    list-style: none;
+    width: 100%;
+}
+
+.top-rank .rank {
+    color: #C77B00;
+}
+
+.top-rank .goods {
+    margin-left: 15px;
+}
+
+.top-rank .line {
+    width: 100%;
+    height: 4px;
+    background-color: #0D2D38;
+    margin-top: 2%;
+    border-radius: 2px;
+}
+
+.line-progress {
+    height: 100%;
+    background-color: #16CEB9;
+    border-radius: 2px;
+}
+
+@-webkit-keyframes rotateplane {
+    0% {
+        -webkit-transform: perspective(0px) rotateX(0deg);
+    }
+
+    100% {
+        -webkit-transform: perspective(250px) rotateX(360deg);
+    }
+}
+
+.flip {
+    animation: 2s rotateplane 0s ease forwards;
+}
