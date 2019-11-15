@@ -152,54 +152,7 @@ body {
     margin-top: 10px;
 }
 
-.menu-item {
-    position: relative;
-    display: inline-block;
-    width: 70px;
-    height: 81px;
-    background: url(../img/hexagon_bg.png) center no-repeat;
-    overflow: hidden;
-}
 
-.menu-item:first-child {
-    margin-right: -6px;
-}
-
-.menu-item:last-child {
-    margin-left: -6px;
-}
-
-.menu-item > a {
-    font-size: 0;
-    color: #00ecc9;
-    text-decoration: none;
-    display: block;
-    width: 200%;
-    height: 100%;
-    white-space: nowrap;
-    position: relative;
-}
-
-.menu-item > a div,
-.menu-item > a span {
-    font-size: 20px;
-    text-align: center;
-    display: inline-block;
-    width: 50%;
-    height: 100%;
-    vertical-align: middle;
-    line-height: 81px;
-    overflow: hidden;
-}
-
-.menu-item a {
-    transition: all ease 1s;
-}
-
-.menu-item:hover a {
-    transform: translateX(-70px);
-    transition: all ease 0.5s;
-}
 
 .block-right {
     width: 25%;
