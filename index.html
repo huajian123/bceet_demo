@@ -136,7 +136,7 @@
 </div>
 
 <script src="./js/echarts.min.js"></script>
-<script src="./js/china.js"></script>
+<script src="./js/gansu.js"></script>
 <script src="./js/bmap.js"></script>
 <script src="./js/vue.min.js"></script>
 <script src="./js/indexData.js"></script>
@@ -264,7 +264,8 @@
                         {
                             name: '底图',
                             type: 'map',
-                            mapType: 'china',
+                            map: '甘肃',
+                            mapType: 'province',
                             roam: false,
                             zoom: 1.2,
                             label: {
@@ -327,7 +328,7 @@
                                 }
                             }
                         }
-                    ]
+                    ],
                 };
 
                 option.series[1].data = convertData(data);
