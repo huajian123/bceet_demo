@@ -12,6 +12,7 @@
     [v-cloak] {
         display: none;
     }
+
     .area-ratio {
         position: relative;
     }
@@ -46,8 +47,8 @@
                     <ul class="top-rank">
                         <li v-for="item,index in proList">
                             <div :class="{'flip': refreshFlip}">
-                                <span class="rank"  v-cloak>NO.{{index+1}}</span>
-                                <span class="goods"  v-cloak>{{item.name}} - {{item.price}}</span>
+                                <span class="rank" v-cloak>NO.{{index+1}}</span>
+                                <span class="goods" v-cloak>{{item.name}} - {{item.price}}</span>
                             </div>
                             <div class="line">
                                 <div class="line-progress" :style='{width:(10 - index) * 10 + "%"}'></div>
@@ -72,14 +73,14 @@
             <div class="title">美丽华夏山体滑坡监控中心</div>
             <div class="amount-panel">
                 <div class="title">监控总平方米</div>
-                <div class="con"  v-cloak>{{dateTime}}</div>
+                <div class="con" v-cloak>{{dateTime}}</div>
             </div>
             <div class="year-amounts"
                  :style="{width: (amountSplitList.length - commaCount) * 60 + commaCount * 30 + 'px'}">
                 <div class="single" v-for="item,el in amountSplitList" :class="{'comma':item === ','}">
                     <div class="nums" :style="{top: - (item * 90) +'px'}">
                         <template v-if="item !== ','">
-                            <div v-for="num,index in 10"  v-cloak>{{index}}</div>
+                            <div v-for="num,index in 10" v-cloak>{{index}}</div>
                         </template>
                         <template v-if="item === ','">
                             <div>,</div>
@@ -92,11 +93,14 @@
         <div id="mapContainer" class="map-container"></div>
         <div class="menu-bar">
             <div class="amount-category">
-                <div><span class="field">正常</span><span class="val"  v-cloak>{{toThousands(amountCategory.amount1)}}</span>
+                <div><span class="field">正常</span><span class="val"
+                                                        v-cloak>{{toThousands(amountCategory.amount1)}}</span>
                 </div>
-                <div><span class="field">预警</span><span class="val"  v-cloak>{{toThousands(amountCategory.amount2)}}</span>
+                <div><span class="field">预警</span><span class="val"
+                                                        v-cloak>{{toThousands(amountCategory.amount2)}}</span>
                 </div>
-                <div><span class="field">危险</span><span class="val" v-cloak>{{toThousands(amountCategory.amount3)}}</span>
+                <div><span class="field">危险</span><span class="val"
+                                                        v-cloak>{{toThousands(amountCategory.amount3)}}</span>
                 </div>
             </div>
             <div class="menu-link">
@@ -118,8 +122,8 @@
                     <ul class="top-rank">
                         <li v-for="item,index in cusList">
                             <div :class="{'flip': refreshFlip}">
-                                <span class="rank"  v-cloak>NO.{{index+1}}</span>
-                                <span class="goods"  v-cloak>{{item.name}} - {{item.price}}</span>
+                                <span class="rank" v-cloak>NO.{{index+1}}</span>
+                                <span class="goods" v-cloak>{{item.name}} - {{item.price}}</span>
                             </div>
                             <div class="line">
                                 <div class="line-progress" :style='{width:(10 - index) * 10 + "%"}'></div>
@@ -167,6 +171,9 @@
             chart5: '',
         },
         methods: {
+            handleScroll(e) {
+                this.chart1.resize();
+            },
             getDateTime() {
                 var weekDayTimer = null;
                 var year = new Date().getFullYear();
@@ -215,7 +222,9 @@
             drawMap(data) {
                 var mapDom = document.getElementById("mapContainer");
                 this.chart1 = echarts.init(mapDom);
-
+                this.chart1.on('mouseover', function (params) {
+                    console.log(params);
+                });
                 var geoCoordMap = {
                     "雨量": [127.056879, 44.419757],
                     "温度": [114.672623, 42.142029],
@@ -826,8 +835,8 @@
                 this.chart3.resize();
                 this.chart4.resize();
                 this.chart5.resize();
-
-            }
+            };
+            window.addEventListener('mousewheel', this.handleScroll, false);
         }
     })
 </script>
