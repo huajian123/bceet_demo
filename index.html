@@ -93,13 +93,13 @@
         <div id="mapContainer" class="map-container"></div>
         <div class="menu-bar">
             <div class="amount-category">
-                <div><span class="field">正常</span><span class="val"
+                <div><span class="field">危险</span><span class="val"
                                                         v-cloak>{{toThousands(amountCategory.amount1)}}</span>
                 </div>
                 <div><span class="field">预警</span><span class="val"
                                                         v-cloak>{{toThousands(amountCategory.amount2)}}</span>
                 </div>
-                <div><span class="field">危险</span><span class="val"
+                <div><span class="field">正常</span><span class="val"
                                                         v-cloak>{{toThousands(amountCategory.amount3)}}</span>
                 </div>
             </div>
@@ -153,13 +153,13 @@
         el: '.container',
         data: {
             dateTime: "",
-            yearAmount: 10000000,
+            yearAmount: 178676,
             amountSplitList: [],
             commaCount: 0,
             proList: [],
             cusList: [],
             refreshCount: 0,
-            amountCategory: {amount1: 7845511, amount2: 2131231, amount3: 2321521,},
+            amountCategory: {amount1: 78455, amount2: 21312, amount3: 3221,},
             refreshFlip: false,
             showPurchaseText: true,
             saleInterval: null,
@@ -176,7 +176,6 @@
                 this.chart1.resize();
             },
             changeMap() {
-                console.log(this.count);
                 if (this.count > 0) {
                     return;
                 }
@@ -188,13 +187,8 @@
                 var self = this;
                 this.chart1.on('click', (params) => {
                     self.count = 0;
-                    console.log(params);
-                    console.log(params.name === "甘肃");
-                    console.log(params.name === "兰州市");
                     _chart1.resize();
-                    console.log(params.name === "红古区");
                     if (params.name === "甘肃") {
-                        console.log("甘肃");
                         _echarts.registerMap('甘肃', {
                             "type": "FeatureCollection", "features": [{
                                 "id": "620100", "type": "Feature", "geometry": {
@@ -288,7 +282,6 @@
                         _chart1.resize();
                         self.count++;
                     } else if (params.name === "兰州市") {
-                        console.log("兰州市");
                         _echarts.registerMap('甘肃', {
                             "type": "FeatureCollection", "features": [{
                                 "type": "Feature",
@@ -431,7 +424,7 @@
                         _chart1.resize();
                         self.count++;
                     } else if (params.name === "红古区") {
-                        console.log("红古区");
+
                         _echarts.registerMap('甘肃', {
                             "type": "FeatureCollection", "features": [{
                                 "type": "Feature",
@@ -596,6 +589,8 @@
                         this.commaCount++;
                     }
                 })
+                // this.amountSplitList.splice(this.amountSplitList.length-4, 4);
+
                 var _this = this;
                 window.setTimeout(function () {
                     var mapData = [
@@ -1201,7 +1196,8 @@
                     chartData.yearAreaSale.forEach(function (item) {
                         upCount += item.value;
                     });
-                    _this.yearAmount += upCount;
+                    // 监控总平方米波动
+                    // _this.yearAmount += upCount;
                     _this.calcYearAmount(_this.yearAmount);
 
                     clearFlipTimer = window.setTimeout(clearFlip, 3000);
